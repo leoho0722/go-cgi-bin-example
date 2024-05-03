@@ -8,19 +8,29 @@ import (
 )
 
 func main() {
-	path3Handler()
+	path1Handler()
 }
 
-func path3Handler() {
+func path1Handler() {
+
+	// CgiReqBody define the cgi-bin request body struct
+	type CgiReqBody struct {
+		Input string `json:"input"`
+	}
+
+	// CgiResBody define the cgi-bin request body struct
+	type CgiResBody struct {
+		Output string `json:"output"`
+	}
+	var responseJson []byte
+
 	defer func() {
 		fmt.Println("HTTP/1.1 200 OK")
 		fmt.Println("Content-Type: application/json")
 		fmt.Println("")
+		fmt.Println(string(responseJson))
 	}()
 
-	type CgiReqBody struct {
-		Title string `json:"title"`
-	}
 	fmt.Println("Content-Type: application/json")
 	fmt.Println("")
 	reqBody, err := io.ReadAll(os.Stdin)
@@ -34,5 +44,14 @@ func path3Handler() {
 		fmt.Println("parse request body failed")
 		return
 	}
-	fmt.Println("Path3 Request body: ", cgiReqBody)
+
+	cgiResBody := CgiResBody{
+		Output: "path3, " + cgiReqBody.Input,
+	}
+	response, err := json.Marshal(cgiResBody)
+	if err != nil {
+		fmt.Println("marshal response body failed")
+		return
+	}
+	responseJson = response
 }

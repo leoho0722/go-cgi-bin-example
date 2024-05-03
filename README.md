@@ -42,46 +42,90 @@ export PATH=$PATH:/usr/local/go/bin
 go version
 ```
 
-#### Complie Go source code
+## Build + Deploy
 
 ```shell
-# in go-cgi-bin-test directory...
-
-# cgi-bin-path1
-cd cgi-bin-path1
-go build -o path1 .
-
-# cgi-bin-path2
-cd cgi-bin-path2
-go build -o path2 .
-
-# cgi-bin-path3
-cd cgi-bin-path3
-go build -o cgi-bin-path3
-
-# cgi-bin-path4
-cd cgi-bin-path4
-go build -o path4 .
+make up
 ```
 
-## Copy file to `usr/lib/cgi-bin` and `/var/www/html`
+## Build
+
+### Complie Go source code
+
+#### Automatic
 
 ```shell
-# in go-cgi-bin-test/cgi-bin-path1 directory...
+make build
+```
+
+#### Manual
+
+```shell
+# Change current path to project directory path
+cd ~/go-cgi-bin-test
+
+# build path1
+cd ./cgi-bin-path1
+go build -o path1
+cd ../
+
+# build path2
+cd ./cgi-bin-path2
+go build -o path2
+cd ../
+
+# build path3
+cd ./cgi-bin-path3
+go build -o path3
+cd ../
+
+# build path4
+cd ./cgi-bin-path4
+go build -o path4
+cd ../
+```
+
+## Deploy
+
+### Copy file to `usr/lib/cgi-bin` and `/var/www/html`
+
+#### Automatic
+
+```shell
+make deploy
+```
+
+#### Manual
+
+```shell
+# Change current path to project directory path
+cd ~/go-cgi-bin-test
+
+# copy path1
+cd ./cgi-bin-path1
 sudo cp ./path1 /usr/lib/cgi-bin/path1
 sudo cp ./path1 /var/www/html/path1
+cd ../
 
-# in go-cgi-bin-test/cgi-bin-path2 directory...
+# copy path2
+cd ./cgi-bin-path2
 sudo cp ./path2 /usr/lib/cgi-bin/path2
 sudo cp ./path2 /var/www/html/path2
+cd ../
 
-# in go-cgi-bin-test/cgi-bin-path3 directory...
+# copy path3
+cd ./cgi-bin-path3
 sudo cp ./path3 /usr/lib/cgi-bin/path3
 sudo cp ./path3 /var/www/html/path3
+cd ../
 
-# in go-cgi-bin-test/cgi-bin-path4 directory...
+# copy path4
+cd ./cgi-bin-path4
 sudo cp ./path4 /usr/lib/cgi-bin/path4
 sudo cp ./path4 /var/www/html/path4
+cd ../
+
+# restart apache2
 ```
 
 ## Test

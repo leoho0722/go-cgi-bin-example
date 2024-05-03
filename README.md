@@ -90,52 +90,64 @@ sudo cp ./path4 /var/www/html/path4
 
 ```shell
 # input
-curl -X POST -H 'Content-Type: application/json' -d '{"title":"a"}' http://127.0.0.1/cgi-bin/path1
+curl -X POST -H 'Content-Type: application/json' -d '{"input":"path1"}' http://127.0.0.1/cgi-bin/path1
 ```
 
 ```text
-Path1 Request body:  {a}
 HTTP/1.1 200 OK
 Content-Type: application/json
+
+{
+    "output": "path1, path1"
+}
 ```
 
 ### cgi-bin-path2
 
 ```shell
 # input
-curl -X POST -H 'Content-Type: application/json' -d '{"title":"b"}' http://127.0.0.1/cgi-bin/path2
+curl -X POST -H 'Content-Type: application/json' -d '{"input":"path2"}' http://127.0.0.1/cgi-bin/path2
 ```
 
 ```text
-Path1 Request body:  {b}
 HTTP/1.1 200 OK
 Content-Type: application/json
+
+{
+    "output": "path2, path2"
+}
 ```
 
 ### cgi-bin-path3
 
 ```shell
 # input
-curl -X POST -H 'Content-Type: application/json' -d '{"title":"3"}' http://127.0.0.1/cgi-bin/path3
+curl -X POST -H 'Content-Type: application/json' -d '{"input":"path3"}' http://127.0.0.1/cgi-bin/path3
 ```
 
 ```text
-Path1 Request body:  {3}
 HTTP/1.1 200 OK
 Content-Type: application/json
+
+{
+    "output": "path3, path3"
+}
 ```
 
 ### cgi-bin-path4
 
 ```shell
 # input
-curl -X POST -H 'Content-Type: application/json' -d '{"title":"4"}' http://127.0.0.1/cgi-bin/path4
+curl -X POST -H 'Content-Type: application/json' -d '{"input":"path4"}' http://127.0.0.1/cgi-bin/path4
 ```
 
 ```text
-Path1 Request body:  {4}
 HTTP/1.1 200 OK
 Content-Type: application/json
+
+{
+    "output": "path4, path4"
+}
 ```
 
 ## Reference

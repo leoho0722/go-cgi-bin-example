@@ -1,4 +1,4 @@
-# Go cgi-bin Test
+# Go cgi-bin Example
 
 ## Prerequisites
 
